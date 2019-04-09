@@ -68,6 +68,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Jsbin連結:<a href="https://jsbin.com/xoyevav/edit?html,js,output">Jsbin</a></p>
+        <a>標籤:#javascript #html #jsbin #研究生日記</a>
         <p>毅然決然決定寫日記，逼自己做研究趕快畢業(艸)，先上心智圖，想研究的是分析學生在網路上打程式的快慢，習慣等等</p>
           <a href="https://i.imgur.com/f8LbuxY.png"><img src="https://i.imgur.com/f8LbuxY.png" width="600" height="450"></a>
         <h2>4月1~2</h2>
@@ -86,14 +88,24 @@
 　          </tr>
 　          <tr>
 　           <td>millisec</td>
-　           <td>必需。在执行代码前需等待的毫秒数</td>
+　           <td>必需。在執行代码前需等待的毫秒数</td>
 　          </tr>
           </table>
           </p>
         <h2>4月8</h2>
-        <p>1.setTimeout函數只能循環一次，而setInterval()可以不斷循環，故使用setInterval更好
-           2.
-        </p>
+        <p>1.setTimeout函數只能循環一次，而setInterval()可以不斷循環，故使用setInterval更好</p>
+        <p>2.setInterval的使用方式大致上與 setTimeout 相同。唯 setInterval 執行次數爲無限重複。若上述範例改用 setInterval 執行，則每隔 200 毫秒，監控台就會印出 hello。參考連結:<a href="https://ithelp.ithome.com.tw/articles/10209476?sc=iThelpR">setInterval</a></p>
+          <pre>var clock = setInterval(printword , 200);
+                function printword(){
+                console.log("hello");
+                }</pre>
+           <p>若要清除定時器，可以使用 clearInterval() ，參數的部分一樣以存放定時器的變數來指定。</p>
+           <pre>clearInterval(clock);</pre>
+        
+        <h2>4月9</h2>
+        <p>1.加上console.log()可以藉由console回傳的值看對不對</p>
+        <a><img src="https://i.imgur.com/EFlhSwt.gif" width="100%"></a>
+        <p>在setInterval我設定的是2000微秒(即2秒)規定2秒取一次字元數量</p>
         
           
       </div>
