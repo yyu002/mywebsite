@@ -20,6 +20,8 @@
 
   <!-- Custom styles for this template -->
   <link href="css/clean-blog.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
 
 </head>
 
@@ -80,7 +82,8 @@
           <p>2.想要加上打字並計算打字時間的功能，而且在使用者開始打字後開始每隔一段時間間歇性的紀錄打在textarea上的字數與時間關係</p>
         <h2>4月7</h2>
           <p>1.setTimeout()函數，用於在指定的毫秒數后調用函数或計算表達式。參考連結:<a href="http://www.w3school.com.cn/htmldom/met_win_settimeout.asp">setTimeout</a>
-          <p>語法:setTimeout(code,millisec)</p>
+          <p>語法:</p>
+          <pre style="background-color:#e0e0eb;">setTimeout(code,millisec)</pre>
           <table border="1">
 　          <tr>
 　           <td>code</td>
@@ -95,17 +98,67 @@
         <h2>4月8</h2>
         <p>1.setTimeout函數只能循環一次，而setInterval()可以不斷循環，故使用setInterval更好</p>
         <p>2.setInterval的使用方式大致上與 setTimeout 相同。唯 setInterval 執行次數爲無限重複。若上述範例改用 setInterval 執行，則每隔 200 毫秒，監控台就會印出 hello。參考連結:<a href="https://ithelp.ithome.com.tw/articles/10209476?sc=iThelpR">setInterval</a></p>
-          <pre>var clock = setInterval(printword , 200);
+          <pre style="background-color:#e0e0eb;">var clock = setInterval(printword , 200);
                 function printword(){
                 console.log("hello");
                 }</pre>
            <p>若要清除定時器，可以使用 clearInterval() ，參數的部分一樣以存放定時器的變數來指定。</p>
-           <pre>clearInterval(clock);</pre>
+           <pre style="background-color:#e0e0eb;">clearInterval(clock);</pre>
         
         <h2>4月9</h2>
-        <p>1.加上console.log()可以藉由console回傳的值看對不對</p>
+        <p>加上console.log()可以藉由console回傳的值看對不對</p>
         <a><img src="https://i.imgur.com/EFlhSwt.gif" width="100%"></a>
         <p>在setInterval我設定的是2000微秒(即2秒)規定2秒取一次字元數量</p>
+        
+        <h2>4月10</h2>
+        <p>1.想在網頁上加上表格，看了chart.js的用法</p>
+        <p>參考連結:<a href="https://www.chartjs.org/samples/latest/">1.chart.js</a>
+                   <a href="https://www.chartjs.org/docs/latest/">2.chart.js</a>
+                   <a href="http://jsfiddle.net/no2don/kp50Lqnh/1/?utm_source=website&utm_medium=embed&utm_campaign=kp50Lqnh">3.範例資料</a></p>
+        <p>2.演示:</p>
+        <div style="width:400px;height:400px">
+            <canvas id="canvasLine"></canvas>
+        </div>
+        <script>            // y 軸的顯示
+            var yAxis= [];
+            // 資料集合，之後只要更新這個就好了。
+            var datas=[];
+            var ctx = document.getElementById('canvasLine').getContext('2d');
+            var lineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels:yAxis,
+                datasets: [{
+                  label: '測試資料',
+                  data: datas,
+                  backgroundColor: "rgba(0,148,255,0.6)"
+                }]
+              }
+            });
+
+            //時間格式
+            var timeFormat = 'HH:mm:ss';
+            
+            function appendData()
+            {
+                //超過10 個，就把最早進來的刪掉
+                if(yAxis.length>10){
+                    yAxis.shift();
+                    datas.shift();
+                }
+
+                //推入y 軸新的資料 
+                yAxis.push(new moment().format(timeFormat));
+                
+                //推入一筆亂數進資料
+                datas.push(Math.floor(Math.random() *100) + 1);
+                
+                //更新線圖
+                lineChart.update();
+            }
+
+            //每秒做一次
+            setInterval(appendData,1000);</script>
         
           
       </div>
