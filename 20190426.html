@@ -71,9 +71,150 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+       <h2>*0326--vue.js的條件渲染(if)</h2>
+
+<p>標籤:vue.js,html,js </p>
+
+<hr/>
+
+<p><a href="https://cn.vuejs.org/v2/guide/conditional.html">vuejs連結</a></p>
+
+<p><a href="https://cythilya.github.io/2017/04/22/vue-conditional-rendering/">參考連結</a></p>
+
+<h3>1.v-if</h3>
+
+<p><code></code>`html
+&lt;h1 v-if=&quot;awesome&quot;&gt;Vue is awesome!&lt;/h1&gt;</p>
+
+<p>&lt;h1 v-if=&quot;awesome&quot;&gt;Vue is awesome!&lt;/h1&gt;
+&lt;h1 v-else&gt;Oh no 😢&lt;/h1&gt;
+<code></code>`</p>
+
+<p>若希望某區塊在特定條件下才出現，可以使用v-if、v-if-else和v-else依照運算結果決定出現的時機。</p>
+
+<p><strong>example</strong></p>
+
+<p>條件為 true 或 false 時才顯示。如下範例，依照 isShow 的值決定顯示的區塊，如果 isShow 為 true，顯示「條正成立」；反之，顯示「條件不成立」。</p>
+
+<ul><li>html:</li></ul>
+
+<p><code>html
+&lt;div id=&quot;app&quot;&gt;
+  &lt;div v-if=&quot;isShow&quot;&gt;條正成立&lt;/div&gt;
+  &lt;div v-else&gt;條件不成立&lt;/div&gt;
+&lt;/div&gt;
+</code>
+* js(vue):</p>
+
+<p><code></code>`js
+var vm = new Vue({
+  el: &#39;#app&#39;,
+  data: {
+    isShow: true
+  }
+});</p>
+
+<p><code></code>`</p>
+
+<ul><li>demo_gif</li></ul>
+
+<h5><img alt="" src="https://i.imgur.com/8O18vNB.gif"/></h5>
+
+<h3>2.v-else-if</h3>
+
+<p>將條件判斷寫在畫面上，依照運算結果決定顯示與否。</p>
+
+<ul><li>html</li></ul>
+
+<p><code>html
+  &lt;div id=app&gt;
+  	&lt;div v-if=&quot;type === &#39;A&#39;&quot;&gt;A&lt;/div&gt;
+  	&lt;div v-else-if=&quot;type === &#39;B&#39;&quot;&gt;B&lt;/div&gt;
+  	&lt;div v-else-if=&quot;type === &#39;C&#39;&quot;&gt;C&lt;/div&gt;
+  	&lt;div v-else&gt;Not A/B/C&lt;div&gt;
+  &lt;/div&gt;
+</code>
+* js</p>
+
+<p><code>js
+var vm = new Vue({
+  el: &#39;#app&#39;,
+  data: {
+    type: &quot;A&quot;
+  }
+});
+</code>
+* demo</p>
+
+<h5><img alt="" src="https://i.imgur.com/d9jpRGn.gif"/></h5>
+
+<h3>3.使用key決定可重複使用的元素</h3>
+
+<h4>A.</h4>
+
+<ul><li><p>為了效能因素，若區塊元素切換只是因為為條件不同而帶入不同的值，元素不會重新渲染，只是替換掉不同的地方。</p><ul><li><p>html</p></li></ul></li></ul>
+
+<p><code>html
+&lt;div id=&quot;app&quot;&gt;
+  &lt;div v-if=&quot;isShow&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;your name&quot;&gt;
+  &lt;/div&gt;
+  &lt;div v-else&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;your email&quot;&gt;
+  &lt;/div&gt;
+  &lt;button @click=&quot;toggle&quot;&gt;切換顯示條件&lt;/button&gt;
+&lt;/div&gt;
+</code>
+  * js</p>
+
+<p><code>js
+  var vm = new Vue({
+    el: &#39;#app&#39;,
+    data: {
+  isShow: true
+    },
+    methods: {
+  toggle: function() {
+    this.isShow = !this.isShow;
+  }
+    }
+  });
+</code></p>
+
+<ul><li>demo</li></ul>
+
+<p><img alt="" src="https://i.imgur.com/ThdOXbs.gif"/></p>
+
+<ul><li>根據 isShow 的真偽值決定顯示的區塊，但不論如何切換，使用者填入的 value 始終不會被清除，而只是替換掉不同的地方，即 placeholder 而已。</li></ul>
+
+<h4>B.</h4>
+
+<ul><li>若希望能有效區別，可加上 key 並帶入唯一值，這樣每次切換就會重新渲染，而非重覆使用已有元素。</li><li>html:</li></ul>
+
+<p><code>html
+&lt;div id=&quot;app&quot;&gt;
+  &lt;div v-if=&quot;isShow&quot;&gt;
+    &lt;input type=&quot;text&quot; key=&quot;123456789&quot; placeholder=&quot;條件成立時的提示文字&quot;&gt;
+  &lt;/div&gt;
+  &lt;div v-else&gt;
+    &lt;input type=&quot;text&quot; key=&quot;987654321&quot; placeholder=&quot;條件不成立時的提示文字&quot;&gt;
+  &lt;/div&gt;
+  &lt;button @click=&quot;toggle&quot;&gt;切換顯示條件&lt;/button&gt;
+&lt;/div&gt;
+</code>
+* demo</p>
+
+<p><img alt="" src="https://i.imgur.com/qpdUfND.gif"/></p>
+
+<ul><li>於是，每次切換時，使用者輸入就會被清空了。</li></ul>
+
+<h3>4. v-if  vs. v-show</h3>
+
+<ul><li>差異在於是否有 else 的狀況。若有其他狀況，則使用<code>v-if</code>；否則<code>v-if</code>和<code>v-show</code>效果相同。</li><li>以 HTML 渲染上來說，<code>v-if</code>是有條件的渲染的，若條件判斷為 true 則渲染；而<code>v-show</code>則是無條件渲染，但視條件以 inline style css 隱藏。</li><li><code>&lt;template&gt;</code>可用<code>v-if</code>決定是否出現，但無法使用<code>v-show</code></li><li>如果需要非常频繁地切换，则使用 <code>v-show</code> 较好；如果在运行时条件很少改变，则使用 <code>v-if</code> 较好。</li></ul>
+
+<h3>5. v-if  vs. v-for</h3>
+
+<ul><li>避免 <code>v-if</code> 與 <code>v-for </code>同時使用:<a href="https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential">參考連結</a></li><li>當 <code>v-if</code> 與 <code>v-for</code> 一起使用時, <code>v-for</code> 具有比 <code>v-if</code> 更高的優先級:<a href="https://vuejs.org/v2/guide/list.html#v-for-with-v-if">參考連結</a></li></ul>
       </div>
     </div>
   </div>
