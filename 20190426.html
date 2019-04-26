@@ -59,8 +59,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>About Me</h1>
-            <span class="subheading">This is what I do.</span>
+            <h1> 04-26-vue學習筆記(1)</h1>
+            <span class="subheading">vue的條件渲染</span>
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@ var vm = new Vue({
 <ul><li><p>為了效能因素，若區塊元素切換只是因為為條件不同而帶入不同的值，元素不會重新渲染，只是替換掉不同的地方。</p><ul><li><p>html</p></li></ul></li></ul>
 
 <p><code>html
-&lt;div id=&quot;app&quot;&gt;
+<pre>&lt;div id=&quot;app&quot;&gt;
   &lt;div v-if=&quot;isShow&quot;&gt;
     &lt;input type=&quot;text&quot; placeholder=&quot;your name&quot;&gt;
   &lt;/div&gt;
@@ -163,11 +163,11 @@ var vm = new Vue({
     &lt;input type=&quot;text&quot; placeholder=&quot;your email&quot;&gt;
   &lt;/div&gt;
   &lt;button @click=&quot;toggle&quot;&gt;切換顯示條件&lt;/button&gt;
-&lt;/div&gt;
+&lt;/div&gt;</pre>
 </code>
   * js</p>
 
-<p><code>js
+<p><code>js<pre>
   var vm = new Vue({
     el: &#39;#app&#39;,
     data: {
@@ -178,7 +178,7 @@ var vm = new Vue({
     this.isShow = !this.isShow;
   }
     }
-  });
+  });</pre>
 </code></p>
 
 <ul><li>demo</li></ul>
@@ -191,7 +191,7 @@ var vm = new Vue({
 
 <ul><li>若希望能有效區別，可加上 key 並帶入唯一值，這樣每次切換就會重新渲染，而非重覆使用已有元素。</li><li>html:</li></ul>
 
-<p><code>html
+<p><code>html<pre>
 &lt;div id=&quot;app&quot;&gt;
   &lt;div v-if=&quot;isShow&quot;&gt;
     &lt;input type=&quot;text&quot; key=&quot;123456789&quot; placeholder=&quot;條件成立時的提示文字&quot;&gt;
@@ -200,7 +200,7 @@ var vm = new Vue({
     &lt;input type=&quot;text&quot; key=&quot;987654321&quot; placeholder=&quot;條件不成立時的提示文字&quot;&gt;
   &lt;/div&gt;
   &lt;button @click=&quot;toggle&quot;&gt;切換顯示條件&lt;/button&gt;
-&lt;/div&gt;
+&lt;/div&gt;</pre>
 </code>
 * demo</p>
 
