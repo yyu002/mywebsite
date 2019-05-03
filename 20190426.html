@@ -84,11 +84,11 @@
           <p>定義好的組件可以重複使用<br>
             <iframe width="100%" height="300" src="//jsfiddle.net/met43/Le8kwg5r/1/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
          一個組件的data項與單純的vue不一樣，組件的data必須是一個函數:<br>
-              <pre><code class="nohighlight">data: function () {
+              <pre>data: function () {
                     return {
                     count: 0
                     }
-                }</code></pre><br>
+                }</pre><br>
         如果沒有這討規則，點擊一個按鈕則會影響到其他按紐:<br>
           <iframe width="100%" height="300" src="//jsfiddle.net/met43/Le8kwg5r/4/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
           如果直接照著教程的把data的function去掉是顯示不出count的次數的，
