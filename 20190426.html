@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/樣式名稱.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
+<script>hljs.initHighlightingOnLoad();</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -82,6 +86,18 @@
           <h3>組件復用</h3>
           <p>定義好的組件可以重複使用<br>
             <iframe width="100%" height="300" src="//jsfiddle.net/met43/Le8kwg5r/1/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+         一個組件的data項與單純的vue不一樣，組件的data必須是一個函數:<br>
+              <pre>data: function () {
+                    return {
+                    count: 0
+                    }
+                }</pre><br>
+        如果沒有這討規則，點擊一個按鈕則會影響到其他按紐:<br>
+          <iframe width="100%" height="300" src="//jsfiddle.net/met43/Le8kwg5r/4/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+          如果直接照著教程的把data的function去掉是顯示不出count的次數的，
+          我去看了concole發現他是把return的值在令一個變數寫進去<br>
+          <h3>全局組件</h3>
+              
           
           
       </div>
