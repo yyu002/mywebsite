@@ -101,13 +101,16 @@
           <iframe width="100%" height="300" src="//jsfiddle.net/met43/zg35yj4q/4/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
           <h3>Prop</h3>    
           <p>prop是可以在組件上加的一些自定義特性,</p>
-          <pre><code class="html"> <blog-post title="My journey with Vue"></blog-post>
-          <blog-post title="Blogging with Vue"></blog-post>
-          <blog-post title="Why Vue is so fun"></blog-post> </code></pre>
-          <pre><code class="javascript">Vue.component('blog-post', {
-          props: ['title'],
-            template: '<h3>{{ title }}</h3>'
-            })</code></pre>
+          <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">          <span style="color: #007700">&lt;blog</span><span style="color: #0000CC">-post</span> <span style="color: #0000CC">title=</span><span style="background-color: #fff0f0">&quot;My journey with Vue&quot;</span><span style="color: #007700">&gt;</span><span style="color: #FF0000; background-color: #FFAAAA">&lt;</span>/blog-post&gt;
+          <span style="color: #007700">&lt;blog</span><span style="color: #0000CC">-post</span> <span style="color: #0000CC">title=</span><span style="background-color: #fff0f0">&quot;Blogging with Vue&quot;</span><span style="color: #007700">&gt;</span><span style="color: #FF0000; background-color: #FFAAAA">&lt;</span>/blog-post&gt;
+          <span style="color: #007700">&lt;blog</span><span style="color: #0000CC">-post</span> <span style="color: #0000CC">title=</span><span style="background-color: #fff0f0">&quot;Why Vue is so fun&quot;</span><span style="color: #007700">&gt;</span><span style="color: #FF0000; background-color: #FFAAAA">&lt;</span>/blog-post&gt;
+          </pre></div>
+
+         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">Vue.component(<span style="background-color: #fff0f0">&#39;blog-post&#39;</span>, {
+          props<span style="color: #333333">:</span> [<span style="background-color: #fff0f0">&#39;title&#39;</span>],
+            template<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;&lt;h3&gt;{{ title }}&lt;/h3&gt;&#39;</span>})
+            </pre></div>
+
       </div>
     </div>
   </div>
