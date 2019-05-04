@@ -101,7 +101,13 @@
           <iframe width="100%" height="300" src="//jsfiddle.net/met43/zg35yj4q/4/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
           <h3>Prop</h3>    
           <p>prop是可以在組件上加的一些自定義特性,</p>
-          
+          <pre><code class="html"> <blog-post title="My journey with Vue"></blog-post>
+          <blog-post title="Blogging with Vue"></blog-post>
+          <blog-post title="Why Vue is so fun"></blog-post> </code></pre>
+          <pre><code class="javascript">Vue.component('blog-post', {
+          props: ['title'],
+            template: '<h3>{{ title }}</h3>'
+            })</code></pre>
       </div>
     </div>
   </div>
